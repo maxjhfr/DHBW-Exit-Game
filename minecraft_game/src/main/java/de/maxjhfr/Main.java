@@ -13,7 +13,7 @@ public class Main extends JavaPlugin {
         Bukkit.getLogger().info("Exit Game plugin started");
         super.onEnable();
 
-        BlockPlaceListener blockPlaceListener = new BlockPlaceListener();
+        final BlockPlaceListener blockPlaceListener = new BlockPlaceListener();
         
 
 
