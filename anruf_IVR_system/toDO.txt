@@ -1,1 +1,0 @@
-https://developer.signalwire.com/guides/weather-phone-in-nodejs-with-signalwire-realtime-api/
