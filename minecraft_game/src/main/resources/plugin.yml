@@ -2,3 +2,8 @@ name: exit_game
 main: de.maxjhfr.Main
 version: 1
 api-version: 1.16
+
+commands:
+  kit:
+    description: TestCommand
+    usage: /<command>
