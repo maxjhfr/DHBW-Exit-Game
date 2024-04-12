@@ -12,7 +12,6 @@ public class WebSocketClient {
 
     public WebSocketClient() {
         try {
-
             ClientManager client = ClientManager.createClient();
             URI uri = new URI("ws://localhost:8765");
             client.connectToServer(new Endpoint() {
