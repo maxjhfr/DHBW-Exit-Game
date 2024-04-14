@@ -1,16 +1,19 @@
 package de.maxjhfr;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import de.maxjhfr.commands.TestCommand;
 import de.maxjhfr.listener.BlockPlaceListener;
-import de.maxjhfr.webSocket.WebSocketClient;
+import de.maxjhfr.webSocket.MyWebSocketClient;
 
 
 public class Main extends JavaPlugin {
 
-    private WebSocketClient websocketClient;
+    private MyWebSocketClient websocketClient;
 
     @Override
     public void onEnable() {
@@ -18,7 +21,11 @@ public class Main extends JavaPlugin {
         super.onEnable();
 
         // activate websocket
-        this.websocketClient = new WebSocketClient();
+        try {
+            this.websocketClient = new MyWebSocketClient(new URI("ws://localhost:8765"));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
 
         // register listeners
         final BlockPlaceListener blockPlaceListener = new BlockPlaceListener();
@@ -40,7 +47,7 @@ public class Main extends JavaPlugin {
     }
 
 
-    public WebSocketClient getWebSocketClient() {
+    public MyWebSocketClient getWebSocketClient() {
         return this.websocketClient;
     }
 

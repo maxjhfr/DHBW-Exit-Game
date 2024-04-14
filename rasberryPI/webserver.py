@@ -7,6 +7,7 @@ async def recieve(websocket):
 
 async def main():
     async with serve(recieve, "localhost", 8765):
+        print('Server started at port: 8765')
         await asyncio.Future()  # run forever
 
 asyncio.run(main())

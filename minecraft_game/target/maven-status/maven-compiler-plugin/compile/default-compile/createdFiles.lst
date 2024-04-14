@@ -1,4 +1,4 @@
 de\maxjhfr\commands\TestCommand.class
 de\maxjhfr\listener\BlockPlaceListener.class
 de\maxjhfr\Main.class
-de\maxjhfr\webSocket\WebSocketClient.class
+de\maxjhfr\webSocket\MyWebSocketClient.class

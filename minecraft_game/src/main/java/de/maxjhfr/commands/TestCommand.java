@@ -6,11 +6,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import de.maxjhfr.Main;
-import de.maxjhfr.webSocket.WebSocketClient;
+import de.maxjhfr.webSocket.MyWebSocketClient;
 
 public class TestCommand implements CommandExecutor {
 
-    private WebSocketClient webSocketClient;
+    private MyWebSocketClient webSocketClient;
 
     public TestCommand(Main plugin) {
         this.webSocketClient = plugin.getWebSocketClient();
@@ -21,18 +21,20 @@ public class TestCommand implements CommandExecutor {
         if (!(sender instanceof Player)) {
             return false;
         }
+        this.webSocketClient.connect();
 
-        webSocketClient.sendMessage("HI");
+        while(!this.webSocketClient.isOpen()) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
 
+        this.webSocketClient.send("HI");
+
+        this.webSocketClient.close();
         
-
-        
-
-
-
-
-        
-
 
         return true;
     }
