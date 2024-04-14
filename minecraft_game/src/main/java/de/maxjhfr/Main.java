@@ -28,7 +28,7 @@ public class Main extends JavaPlugin {
         }
 
         // register listeners
-        final BlockPlaceListener blockPlaceListener = new BlockPlaceListener();
+        final BlockPlaceListener blockPlaceListener = new BlockPlaceListener(this);
         
 
         // register commands
