@@ -31,9 +31,7 @@ public class TestCommand implements CommandExecutor {
             }
         }
 
-        this.webSocketClient.send("HI");
-
-        this.webSocketClient.close();
+        this.webSocketClient.send("green");
         
 
         return true;
