@@ -17,7 +17,16 @@ public class MyWebSocketClient extends WebSocketClient {
 
   @Override
     public void onOpen(ServerHandshake handshakedata) {
-        System.out.println("Connected to server");
+      System.out.println("Connected to server");
+
+      this.connect();
+      while(!this.isOpen()) {
+        try {
+          Thread.sleep(10);
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      }
     }
 
   @Override
@@ -36,17 +45,7 @@ public class MyWebSocketClient extends WebSocketClient {
   }
 
   public void connectAndSend(String message) {
-    	this.connect();
-      while(!this.isOpen()) {
-        try {
-          Thread.sleep(10);
-        } catch (InterruptedException e) {
-          e.printStackTrace();
-        }
-      }
       this.send(message);
-      this.close();
-
   }
 
 

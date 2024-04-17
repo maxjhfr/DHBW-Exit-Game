@@ -1,5 +1,5 @@
 // script.js
-const socket = io();
+const socket = io('ws://localhost:8765');
 socket.on('connect', () => {
     console.log('Connected to WebSocket server');
 });
