@@ -26,7 +26,7 @@ public class BlockPlaceListener implements Listener {
             e.setCancelled(false);
             p.sendMessage(ChatColor.GREEN + "Gut gemacht! Du hast jetzt wieder Empfang und du sendest auf Leitung "
                         + ChatColor.BLUE + '7');
-            plugin.getWebSocketClient().connectAndSend("minecraftGameComplete");
+            plugin.getWebSocketClient().sendMessage("minecraft", "done");
         } else {
             e.setCancelled(true);
             p.sendMessage(ChatColor.RED + "Die Antenne ist nicht hoch genug");

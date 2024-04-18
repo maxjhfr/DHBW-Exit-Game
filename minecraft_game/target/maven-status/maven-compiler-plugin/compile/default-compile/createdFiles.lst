@@ -2,3 +2,4 @@ de\maxjhfr\commands\TestCommand.class
 de\maxjhfr\listener\BlockPlaceListener.class
 de\maxjhfr\Main.class
 de\maxjhfr\webSocket\MyWebSocketClient.class
+de\maxjhfr\webSocket\test.class
