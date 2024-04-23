@@ -12,14 +12,12 @@ socket.on('connect', () => {
 
 socket.on('minecraft_done', (data) => {
     console.log(data)
-    if (data === 'green') {
-        document.getElementById('minecraft_done').style.backgroundColor = data;
-    }
+    let code = data.data
+    document.getElementById('testField').innerHTML = code
+    document.getElementById('minecraft_done').style.backgroundColor = 'green'
 });
 
 socket.on('minecraft_connected', (data) => {
     console.log(data)
-    if (data === 'green') {
-        document.getElementById('minecraft_connected').style.backgroundColor = data;
-    }
+    document.getElementById('minecraft_connected').style.backgroundColor = 'green';
 });

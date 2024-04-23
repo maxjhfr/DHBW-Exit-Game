@@ -19,8 +19,7 @@ public class MyWebSocketClient extends WebSocketClient {
   @Override
     public void onOpen(ServerHandshake handshakedata) {
       System.out.println("Connected to server");
-
-      sendMessage("minecraft_connected", null);
+      sendMessage("minecraft", "connected");
     }
 
   @Override
@@ -39,28 +38,22 @@ public class MyWebSocketClient extends WebSocketClient {
   }
 
   /**
-   * @param type
-   * @param value
-   * 
+   * @param type name of the game
+   * @param value status
+   *
    * Sends a JSON String to the Flask server 
    */
   public void sendMessage(String type, Object value) {
 
-    // check if connection is established
-    Boolean isConnected = false;
-    if (isOpen()) isConnected = true;
-
-
     // create JSON to send to server
     JSONObject jsonObject = new JSONObject();
     jsonObject.put("type", type);
-    jsonObject.put("connected", isConnected);
     jsonObject.put("value", value);
 
     // send message
     if (isOpen()) {
         send(jsonObject.toString());
-        System.out.println("Message sent");
+        System.out.println("Message sent: " + jsonObject.toString());
     } else {
         System.out.println("WebSocket connection is not open. Cannot send message.");
     }
