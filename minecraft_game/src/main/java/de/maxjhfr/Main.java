@@ -22,7 +22,7 @@ public class Main extends JavaPlugin {
 
         // activate websocket
         try {
-            this.websocketClient = new MyWebSocketClient(new URI("ws://127.0.0.1:5000"));
+            this.websocketClient = new MyWebSocketClient(new URI("ws://192.168.178.84:5000"));
             this.websocketClient.connect();
         } catch (URISyntaxException e) {
             e.printStackTrace();

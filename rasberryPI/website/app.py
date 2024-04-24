@@ -25,13 +25,12 @@ def recieve(ws):
          if isinstance(data, dict) and 'type' in data:
             if data['type'] == 'minecraft':
                value = data.get('value')
-               match value:
-                  case 'done':
-                     print('minecraft done')
-                     socketio.emit('minecraft_done', {'data': 4})
-                  case 'connected':
-                     print('minecraft connected')
-                     socketio.emit('minecraft_connected')
+               if value == 'done':
+                  print('minecraft done')
+                  socketio.emit('minecraft_done', {'data': 4})
+               elif value == 'connected':
+                  print('minecraft connected')
+                  socketio.emit('minecraft_connected')
 
          else:
             print('Invalid JSON format: ', data)
@@ -40,4 +39,4 @@ def recieve(ws):
 
 
 if __name__ == "__main__":
-  app.run("127.0.0.1", port=5000)
+  app.run("0.0.0.0", port=5000)
