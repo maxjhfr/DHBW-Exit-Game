@@ -10,7 +10,7 @@ public class MyWebSocketClient extends WebSocketClient {
 
   /**
    * @param serverUri
-   * URI is "ws://localhost:5000"
+   * URI is "ws://196.168.178.84:5000"
    */
   public MyWebSocketClient(URI serverUri) {
     super(serverUri);
