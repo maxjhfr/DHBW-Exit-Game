@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template
 from flask_sock import Sock
 from flask_socketio import SocketIO
 import json
