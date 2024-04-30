@@ -1,12 +1,16 @@
 import mediapipe as mp
 import cv2
 import numpy as np
+from mediapipe.tasks import python
+from mediapipe.tasks.python import vision
 
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
+
 #open video from camera
 cap = cv2.VideoCapture(0)
+
 
 #create hand recognition model
 with mp_hands.Hands(min_detection_confidence = 0.7, min_tracking_confidence = 0.5) as hands:
@@ -17,10 +21,12 @@ with mp_hands.Hands(min_detection_confidence = 0.7, min_tracking_confidence = 0.
     ret, frame = cap.read()
 
 
+
     #mediapipe recognition
     #feed from openCV is in BGR and needs to be set to RGB
     image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
     image.flags.writeable = False
+
     #detect
     results = hands.process(image)
 
@@ -31,7 +37,8 @@ with mp_hands.Hands(min_detection_confidence = 0.7, min_tracking_confidence = 0.
     #draw landmarks on camera feed one frame at the time
     if results.multi_hand_landmarks:
 
-      is_thumb_up = False
+      thumb_up = []
+      curled = []
 
       for num, hand in enumerate(results.multi_hand_landmarks):
         #draw landmarks and connections
@@ -41,7 +48,15 @@ with mp_hands.Hands(min_detection_confidence = 0.7, min_tracking_confidence = 0.
                                   mp_drawing.DrawingSpec(color=(121, 44, 250), thickness = 2, circle_radius = 2),
                                   )
         
+
         #process if there is a "thumbs up"
+
+
+        #check if thumb is bent straight up
+
+
+
+
         #thumbs up is if thumb is raised and others are curled
         thumb_tip = hand.landmark[mp_hands.HandLandmark.THUMB_TIP] 
         wrist_landmark = hand.landmark[mp_hands.HandLandmark.WRIST]
@@ -50,9 +65,15 @@ with mp_hands.Hands(min_detection_confidence = 0.7, min_tracking_confidence = 0.
                       mp_hands.HandLandmark.RING_FINGER_TIP,
                       mp_hands.HandLandmark.PINKY_TIP]
         
+        #check if thumb is pointing up
+
+
+
+
+
+
 
         #check if thumb position is higher relative to wrist
-        thumb_up = []
         
         
         for finger_tip in other_tips:
@@ -98,7 +119,7 @@ with mp_hands.Hands(min_detection_confidence = 0.7, min_tracking_confidence = 0.
 
 
         #if thumb up, then show text
-        if percent_true > 70 :
+        if percent_true > 85 :
           cv2.putText(image, f'Daumen hoch!', (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
                       1, (144, 255, 0), 2)
 
