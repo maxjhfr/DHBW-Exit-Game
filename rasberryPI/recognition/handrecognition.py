@@ -115,7 +115,7 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
         percent_true = (curled_true / total_elements) * 100 
         percent_false = (curled_false / total_elements) * 100
 
-        print("True:  ", percent_true, "  False:   ", percent_false, "   ", curled, "   ", thumb_up, "   ", thumb_angle)
+        print("True:  ", percent_true, "  False:   ", percent_false, "   curled: ", curled, "   thumb_up: ", thumb_up, "   thumb_angle: ", thumb_angle)
 
         #if thumb up, then show text
         if percent_true > 80 and thumb_up and thumb_angle:
