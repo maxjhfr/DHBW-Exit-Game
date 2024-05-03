@@ -8,12 +8,14 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import de.maxjhfr.commands.TestCommand;
 import de.maxjhfr.listener.BlockPlaceListener;
+import de.maxjhfr.listener.JoinListener;
 import de.maxjhfr.webSocket.MyWebSocketClient;
 
 
 public class Main extends JavaPlugin {
 
     private MyWebSocketClient websocketClient;
+    private ForceResourcePack forceResourcePack;
 
     @Override
     public void onEnable() {
@@ -28,17 +30,19 @@ public class Main extends JavaPlugin {
             e.printStackTrace();
         }
 
-        // register listeners
-        final BlockPlaceListener blockPlaceListener = new BlockPlaceListener(this);
-        
-
         // register commands
         this.getCommand("test").setExecutor(new TestCommand(this));
 
-
-
+        // register listeners
+        final BlockPlaceListener blockPlaceListener = new BlockPlaceListener(this);
+        final JoinListener joinListener = new JoinListener(this);
         getServer().getPluginManager().registerEvents(blockPlaceListener, this);
+        getServer().getPluginManager().registerEvents(joinListener, this);
 
+        //register force resource pack
+        this.forceResourcePack = new ForceResourcePack();
+    
+        
     }
 
     @Override
@@ -50,6 +54,10 @@ public class Main extends JavaPlugin {
 
     public MyWebSocketClient getWebSocketClient() {
         return this.websocketClient;
+    }
+
+    public ForceResourcePack getForceResourcePack() {
+        return this.forceResourcePack;
     }
 
 
