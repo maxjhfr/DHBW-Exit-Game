@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-	"texture": "textures/tower.png",
+	"texture": "tower.png",
 	"textureSize": [128, 128],
 	"models": [
 		{
