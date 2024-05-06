@@ -17,12 +17,13 @@ def recieve(ws):
 
    while True:
       data = ws.receive()
+      data = str(data).replace("'", '"')
 
       try:
          data = json.loads(data)
 
-         print (data)
          if isinstance(data, dict) and 'type' in data:
+
             if data['type'] == 'minecraft':
                value = data.get('value')
                if value == 'done':
@@ -31,6 +32,12 @@ def recieve(ws):
                elif value == 'connected':
                   print('minecraft connected')
                   socketio.emit('minecraft_connected')
+
+            if data['type'] == 'nfc_raspi':
+               value = data.get('value')
+               if value == 'read':
+                  socketio.emit('nfc_raspi_read')
+
 
          else:
             print('Invalid JSON format: ', data)

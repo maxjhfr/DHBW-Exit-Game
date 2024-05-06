@@ -21,3 +21,8 @@ socket.on('minecraft_connected', (data) => {
     console.log(data)
     document.getElementById('minecraft_connected').style.backgroundColor = 'green';
 });
+
+socket.on('nfc_raspi_read', (data) => {
+    console.log(data)
+    document.getElementById('nfc_raspi_read').style.backgroundColor = 'green';
+});
