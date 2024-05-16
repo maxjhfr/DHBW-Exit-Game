@@ -3,6 +3,10 @@ import cv2
 import numpy as np
 from math import atan2, degrees
 
+
+def timerFinished():
+  pass
+
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
@@ -36,15 +40,14 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
 
       thumb_up = False
       thumb_angle = False
-      curled = []
+      curled_distance = []
 
       for num, hand in enumerate(results.multi_hand_landmarks):
         #draw landmarks and connections
         mp_drawing.draw_landmarks(image, hand, mp_hands.HAND_CONNECTIONS,
                                   #make lines look pretty
                                   mp_drawing.DrawingSpec(color=(121, 22, 76), thickness = 2, circle_radius = 4),
-                                  mp_drawing.DrawingSpec(color=(121, 44, 250), thickness = 2, circle_radius = 2),
-                                  )
+                                  mp_drawing.DrawingSpec(color=(121, 44, 250), thickness = 2, circle_radius = 2))
 
 
         #process if there is a "thumbs up"
@@ -61,7 +64,6 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
                       mp_hands.HandLandmark.MIDDLE_FINGER_MCP,
                       mp_hands.HandLandmark.RING_FINGER_MCP,
                       mp_hands.HandLandmark.PINKY_MCP]
-        
 
         #check if thumb is pointing up (rotation)
         angle_radians = atan2(thumb_mcp.y - thumb_tip.y,
@@ -84,38 +86,45 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
           thumb_up = False
         else:
           thumb_up = True
-        
-        
-        #check distance between other tips and wrist (check if curled)
+
         for i in range(len(other_tips)):
+          #check distance between other tips and wrist (check if curled)
           finger_tip_landmark = hand.landmark[other_tips[i]] 
           finger_mcp_landmark = hand.landmark[other_mcp[i]] 
 
           middle_point = ([(wrist.x + finger_mcp_landmark.x) / 2, 
-                                      (wrist.y + finger_mcp_landmark.y) / 2,
-                                      (wrist.z + finger_mcp_landmark.z) / 2])
+                           (wrist.y + finger_mcp_landmark.y) / 2,
+                           (wrist.z + finger_mcp_landmark.z) / 2])
 
           finger_point = np.array([finger_tip_landmark.x, finger_tip_landmark.y, finger_tip_landmark.z])
           distance = np.linalg.norm(middle_point - finger_point)
 
+          #accepted distance gets expandet if fingers are behind hand
+          if (finger_tip_landmark.z > finger_mcp_landmark.z):
+            pass
+
+
           if distance > 0.1:
-            curled.append(False)
+            curled_distance.append(False)
           else:
-            curled.append(True)
+            curled_distance.append(True)
 
 
 
         #calculate if is thubs up
-        curled_true = sum(curled)  
-        curled_false = len(curled) - curled_true
+        curled_true = sum(curled_distance)  
+        curled_false = len(curled_distance) - curled_true
         
-        total_elements = len(curled)
+        total_elements = len(curled_distance)
         if total_elements == 0:
           break
-        percent_true = (curled_true / total_elements) * 100 
-        percent_false = (curled_false / total_elements) * 100
+        percent_true = (curled_true / total_elements) * 100
 
-        print("True:  ", percent_true, "  False:   ", percent_false, "   curled: ", curled, "   thumb_up: ", thumb_up, "   thumb_angle: ", thumb_angle)
+        print("Curled percentage:  ", percent_true,
+              "  curled distance", curled_distance,
+
+              "  Thumb up:", thumb_up,
+              "  thumb_angle: ", thumb_angle)
 
         #if thumb up, then show text
         if percent_true > 80 and thumb_up and thumb_angle:
