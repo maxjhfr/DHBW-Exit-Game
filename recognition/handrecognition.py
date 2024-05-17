@@ -2,18 +2,17 @@ import mediapipe as mp
 import cv2
 import numpy as np
 from math import atan2, degrees
-
-
-def timerFinished():
-  pass
+from gesture_timer import Timer
 
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
-
 #open video from camera
 cap = cv2.VideoCapture(0)
 
+#create an instance of the gesture Timer class
+timer = Timer()
+THUMBS_UP_HOLD_TIME = 2
 
 #create hand recognition model
 with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_tracking_confidence = 0.5) as hands:
@@ -22,7 +21,9 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
   while cap.isOpened():
     #read every frame 
     ret, frame = cap.read()
-
+    if not ret:
+      break
+    
     #mediapipe recognition
     #feed from openCV is in BGR and needs to be set to RGB
     image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -37,7 +38,6 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
 
     #draw landmarks on camera feed one frame at the time
     if results.multi_hand_landmarks:
-
       thumb_up = False
       thumb_angle = False
       curled_distance = []
@@ -77,10 +77,6 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
         if 60 <= angle_degrees <= 120:
           thumb_angle = True
 
-
-
-
-
         # thumb is over other tips
         if hand.landmark[mp_hands.HandLandmark.INDEX_FINGER_TIP].y < thumb_tip.y:
           thumb_up = False
@@ -103,12 +99,10 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
           if (finger_tip_landmark.z > finger_mcp_landmark.z):
             pass
 
-
           if distance > 0.1:
             curled_distance.append(False)
           else:
             curled_distance.append(True)
-
 
 
         #calculate if is thubs up
@@ -120,16 +114,45 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
           break
         percent_true = (curled_true / total_elements) * 100
 
-        print("Curled percentage:  ", percent_true,
-              "  curled distance", curled_distance,
+        # print("Curled percentage:  ", percent_true,
+        #       "  curled distance", curled_distance,
 
-              "  Thumb up:", thumb_up,
-              "  thumb_angle: ", thumb_angle)
-
+        #       "  Thumb up:", thumb_up,
+        #       "  thumb_angle: ", thumb_angle)
+        
+      
         #if thumb up, then show text
         if percent_true > 80 and thumb_up and thumb_angle:
-          cv2.putText(image, f'Daumen hoch!', (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
-                      1, (144, 255, 0), 2)
+          thumbs_up_duration = 0
+          if not timer.is_running():
+            timer.start()
+          else:
+            thumbs_up_duration = timer.get_duration()
+
+          if thumbs_up_duration >= THUMBS_UP_HOLD_TIME:
+            timer.stop()
+            text = "completed"
+            font_scale = 4
+            font_thickness = 7
+            text_size, _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, font_scale, font_thickness)
+            text_x = (image.shape[1] - text_size[0]) // 2
+            text_y = (image.shape[0] + text_size[1]) // 2    
+            cv2.putText(image, text, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (127, 51, 171), font_thickness)
+            cv2.imshow('Hand Tracking', image)
+            cv2.waitKey(4000)  # Wait for 2 seconds to display the success message
+            cap.release()
+            cv2.destroyAllWindows()
+            exit(0)
+            break
+          else:
+            progress = int((thumbs_up_duration / THUMBS_UP_HOLD_TIME) * 300)
+            cv2.rectangle(image, (10, 40), (10 + progress, 60), (127, 51, 171), -1)
+            cv2.putText(image, f'Time: {thumbs_up_duration:.1f}s', (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1, (127, 51, 171), 2)
+        else:
+          timer.reset()
+        
+          # cv2.putText(image, f'Daumen hoch!', (10, 30), cv2.FONT_HERSHEY_SIMPLEX,
+          #             1, (144, 255, 0), 2)
 
     
 
