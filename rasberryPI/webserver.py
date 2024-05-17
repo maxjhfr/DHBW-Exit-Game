@@ -16,6 +16,7 @@ async def send_message_to_flask():
       print("Connection to websocket server is closed")
     except websockets.WebSocketException as e:
       print(f"WebSocket error: {e}")  
+    websocket.close()
        
 reader = SimpleMFRC522()
 
