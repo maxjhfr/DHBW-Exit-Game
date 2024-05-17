@@ -7,13 +7,12 @@ from gesture_timer import Timer
 mp_drawing = mp.solutions.drawing_utils
 mp_hands = mp.solutions.hands
 
-
 #open video from camera
 cap = cv2.VideoCapture(0)
 
 #create an instance of the gesture Timer class
 timer = Timer()
-THUMBS_UP_HOLD_TIME = 3
+THUMBS_UP_HOLD_TIME = 2
 
 #create hand recognition model
 with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_tracking_confidence = 0.5) as hands:
@@ -138,7 +137,7 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
             text_size, _ = cv2.getTextSize(text, cv2.FONT_HERSHEY_SIMPLEX, font_scale, font_thickness)
             text_x = (image.shape[1] - text_size[0]) // 2
             text_y = (image.shape[0] + text_size[1]) // 2    
-            cv2.putText(image, text, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (255, 255, 0), font_thickness)
+            cv2.putText(image, text, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (127, 51, 171), font_thickness)
             cv2.imshow('Hand Tracking', image)
             cv2.waitKey(4000)  # Wait for 2 seconds to display the success message
             cap.release()
@@ -147,8 +146,8 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
             break
           else:
             progress = int((thumbs_up_duration / THUMBS_UP_HOLD_TIME) * 300)
-            cv2.rectangle(image, (10, 40), (10 + progress, 60), (255, 255, 0), -1)
-            cv2.putText(image, f'Time: {thumbs_up_duration:.1f}s', (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2)
+            cv2.rectangle(image, (10, 40), (10 + progress, 60), (127, 51, 171), -1)
+            cv2.putText(image, f'Time: {thumbs_up_duration:.1f}s', (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1, (127, 51, 171), 2)
         else:
           timer.reset()
         
