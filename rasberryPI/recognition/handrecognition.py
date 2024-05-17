@@ -106,12 +106,6 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
             curled_distance.append(True)
 
 
-
-
-        
-
-
-
         #calculate if is thubs up
         curled_true = sum(curled_distance)  
         curled_false = len(curled_distance) - curled_true
@@ -121,13 +115,12 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
           break
         percent_true = (curled_true / total_elements) * 100
 
-        print("Curled percentage:  ", percent_true,
-              "  curled distance", curled_distance,
+        # print("Curled percentage:  ", percent_true,
+        #       "  curled distance", curled_distance,
 
-              "  Thumb up:", thumb_up,
-              "  thumb_angle: ", thumb_angle)
+        #       "  Thumb up:", thumb_up,
+        #       "  thumb_angle: ", thumb_angle)
         
-
       
         #if thumb up, then show text
         if percent_true > 80 and thumb_up and thumb_angle:
