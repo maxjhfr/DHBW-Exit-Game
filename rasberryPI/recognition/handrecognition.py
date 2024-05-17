@@ -23,7 +23,7 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
     ret, frame = cap.read()
     if not ret:
       break
-
+    
     #mediapipe recognition
     #feed from openCV is in BGR and needs to be set to RGB
     image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
