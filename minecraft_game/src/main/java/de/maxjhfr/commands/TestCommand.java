@@ -6,11 +6,8 @@ import org.bukkit.command.CommandSender;
 
 import de.maxjhfr.Main;
 import de.maxjhfr.webSocket.MinecraftToFlask;
-import de.maxjhfr.webSocket.MyWebSocketClient;
 
 public class TestCommand implements CommandExecutor {
-
-    private MyWebSocketClient webSocketClient;
 
     public TestCommand(Main plugin) {
     }

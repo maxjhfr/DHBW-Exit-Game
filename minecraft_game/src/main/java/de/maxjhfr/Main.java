@@ -24,7 +24,7 @@ public class Main extends JavaPlugin {
         // register listeners
         final MobSpawnListener mobSpawnListener = new MobSpawnListener();
         final BlockPlaceListener blockPlaceListener = new BlockPlaceListener();
-        final JoinListener joinListener = new JoinListener(this);
+        final JoinListener joinListener = new JoinListener();
         getServer().getPluginManager().registerEvents(blockPlaceListener, this);
         getServer().getPluginManager().registerEvents(joinListener, this);
         getServer().getPluginManager().registerEvents(mobSpawnListener, this);

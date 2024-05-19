@@ -6,7 +6,6 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.ItemMergeEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemFlag;
@@ -14,15 +13,10 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ArmorMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import de.maxjhfr.Main;
-import net.md_5.bungee.api.chat.hover.content.Item;
-
 public class JoinListener implements Listener {
 
-    private Main plugin;
 
-    public JoinListener(Main plugin) {
-        this.plugin = plugin;
+    public JoinListener() {
     }
 
     @EventHandler
