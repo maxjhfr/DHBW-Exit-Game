@@ -49,5 +49,28 @@ public class JoinListener implements Listener {
         meta2.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         glass.setItemMeta(meta2);
         p.getInventory().setItem(EquipmentSlot.HEAD, glass);
+
+        ItemStack space1 = new ItemStack(Material.IRON_CHESTPLATE);
+        ArmorMeta meta3 = (ArmorMeta) space1.getItemMeta();
+        meta3.setDisplayName("Space suit");
+        meta3.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        space1.setItemMeta(meta3);
+        p.getInventory().setItem(EquipmentSlot.CHEST, space1);
+
+        ItemStack space2 = new ItemStack(Material.IRON_LEGGINGS);
+        ArmorMeta meta4 = (ArmorMeta) space2.getItemMeta();
+        meta4.setDisplayName("Space suit");
+        meta4.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        space2.setItemMeta(meta4);
+        p.getInventory().setItem(EquipmentSlot.LEGS, space2);
+
+        ItemStack space3 = new ItemStack(Material.IRON_BOOTS);
+        ArmorMeta meta5 = (ArmorMeta) space3.getItemMeta();
+        meta5.setDisplayName("Space suit");
+        meta5.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        space3.setItemMeta(meta5);
+        p.getInventory().setItem(EquipmentSlot.FEET, space3);
+
+
     }
 }

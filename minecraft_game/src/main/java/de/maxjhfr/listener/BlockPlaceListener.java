@@ -2,9 +2,6 @@ package de.maxjhfr.listener;
 
 import net.md_5.bungee.api.ChatColor;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -12,17 +9,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityPlaceEvent;
 
-import de.maxjhfr.Main;
 import de.maxjhfr.webSocket.MinecraftToFlask;
-import de.maxjhfr.webSocket.MyWebSocketClient;
 
 public class BlockPlaceListener implements Listener {
-
-    private Main plugin;
-
-    public BlockPlaceListener(Main plugin) {
-        this.plugin = plugin;
-    }
 
 
     @EventHandler
