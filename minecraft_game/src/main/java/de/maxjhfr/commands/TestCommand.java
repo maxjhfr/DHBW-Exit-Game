@@ -5,6 +5,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
 import de.maxjhfr.Main;
+import de.maxjhfr.webSocket.MinecraftToFlask;
 import de.maxjhfr.webSocket.MyWebSocketClient;
 
 public class TestCommand implements CommandExecutor {
@@ -12,12 +13,11 @@ public class TestCommand implements CommandExecutor {
     private MyWebSocketClient webSocketClient;
 
     public TestCommand(Main plugin) {
-        this.webSocketClient = plugin.getWebSocketClient();
     }
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        this.webSocketClient.sendMessage("minecraft", "done");
+        new MinecraftToFlask().sendPostRequest("minecraft", "done");
         
 
         return true;

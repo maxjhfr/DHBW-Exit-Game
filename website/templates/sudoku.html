@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Unicode UTF-8 -->
+    <!-- character set -->
+    <meta charset="UTF-8">
+
+    <!-- viewport dimensions and scaling -->
+    <!-- Dieser Meta-Tag definiert die Breite des Viewports und die initiale Zoomstufe für mobile Geräte. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+    <!-- title -->
+    <!-- Titel des Dokuments, der im Browser-Tab angezeigt wird. -->
+    <title>Sudoku</title>
+
+    <!-- link CSS (Stylesheet language) -->
+    <!-- Dieser Link verweist auf eine externe CSS-Datei, die für das Styling der Seite verwendet wird. -->
+    <link rel="stylesheet" href="..\static\css\styles_sudoku.css">
+
+    <!-- link JavaScript -->
+    <!-- Dieser Script-Tag verweist auf eine externe JavaScript-Datei, die für die Logik des Spiels verwendet wird. -->
+    <!-- Das "defer"-Attribut bewirkt, dass das Skript nach dem Parsen des HTML-Dokuments ausgeführt wird. -->
+    <script src="..\static\js\script_sudoku.js" defer></script>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Überschrift des Spiels -->
+        <h1>Sudoku</h1>
+        <!-- Anzeige der Fehleranzahl -->
+        <h2 id="errors">Errors: 0</h2>
+        <!-- Sudoku-Brett -->
+        <div id="board"></div>
+        <!-- Platz für die Zahlenauswahl -->
+        <br>
+        <div id="digits"></div>
+    </div>
+    <!-- Endbildschirm, standardmäßig ausgeblendet -->
+    <div id="end-screen" style="display:none;">
+        <!-- Nachricht auf dem Endbildschirm -->
+        <h1 id="end-message"></h1>
+        <!-- Button zum Neustarten des Spiels -->
+        <button id="end-button" onclick="restartGame()">Neustart</button>
+    </div>
+</body>
+</html>

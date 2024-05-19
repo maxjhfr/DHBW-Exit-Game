@@ -1,0 +1,12 @@
+type      ,value   ,usage
+
+rfid      ,scanned ,sent when rasberry pi recognises a new rfid thing being scanned
+
+
+
+
+
+
+
+minecraft ,done    ,minecraft game is done
+

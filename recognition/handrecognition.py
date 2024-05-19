@@ -12,7 +12,7 @@ cap = cv2.VideoCapture(0)
 
 #create an instance of the gesture Timer class
 timer = Timer()
-THUMBS_UP_HOLD_TIME = 2
+THUMBS_UP_HOLD_TIME = 3
 
 #create hand recognition model
 with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_tracking_confidence = 0.5) as hands:
@@ -139,7 +139,7 @@ with mp_hands.Hands(max_num_hands = 1, min_detection_confidence = 0.7, min_track
             text_y = (image.shape[0] + text_size[1]) // 2    
             cv2.putText(image, text, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, font_scale, (127, 51, 171), font_thickness)
             cv2.imshow('Hand Tracking', image)
-            cv2.waitKey(4000)  # Wait for 2 seconds to display the success message
+            cv2.waitKey(2000)  # Wait for 2 seconds to display the success message
             cap.release()
             cv2.destroyAllWindows()
             exit(0)

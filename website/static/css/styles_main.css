@@ -1,0 +1,124 @@
+body {
+  /*font:*/
+  /*if browser does not support the first font, it tries the next font*/
+  font-family: Arial, Helvetica, sans-serif;
+  
+  /*to align it in the middle*/
+  text-align: center;
+  color:white;
+  
+  /*to change width of the text*/
+  width: 80%;
+  /*centers the text horizontally*/
+  margin: 10px auto;
+  
+  /*background image*/
+  background-image: url('backgroud.jpeg');
+  /*to adjust the image to the size of the window*/
+  background-size: cover;
+}
+
+h1{
+  /*to change color of heading*/
+  color: #ab337f;
+
+}
+
+h2{
+  /*to change color of heading*/
+  /*color:white;*/
+  color: #4bbed4
+}
+
+/*Timer*/
+#timer{
+  /*to change width of the progress bar*/
+  width: 90%;
+  /*to change height of the progress bar*/
+  height: 30px;
+  /*centers the progress bar horizontally*/
+  margin: 10px auto;
+}
+
+.timer-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  place-items: center;
+}
+
+#start-button {
+  background-color: #ab337f;
+  border: none;
+  font-size: large;
+  padding: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+#start-button:hover  {
+  background-color: #7d245d;
+}
+
+/*progressbar*/
+
+.gauge {
+  width: 100%; /*trys to reach 100% width, but stop at 250px*/
+  max-width: 250px;
+  font-family: sans-serif;
+  font-size: 23px; /*text size*/
+  color: #ab337f; /*#004033;*/
+  /*to center it hhorizontally*/
+  margin: 0 auto;
+}
+
+.gauge__body {
+  width: 100%; /*takes up width of .gauge*/
+
+  /* to make the height half of the width: */
+  height: 0;
+  padding-bottom: 50%;
+  background: #4bbed4; /*#b4c0be;*/ /* color of the part of the progress bar that is still remaining*/
+  position: relative;
+  /*to convert rectangle into a semi-circle*/
+  border-top-left-radius: 100% 200%;/* to round the top-left corner of an element */
+  border-top-right-radius: 100% 200%; /* to round the top-right corner of an element */
+  overflow: hidden; /*overflow property controls what happens to content that is too big to fit into an area*/
+  /*The overflow is clipped, and the rest of the content will be invisible*/
+}
+
+.gauge__fill {
+  position: absolute; /*works in combination with position: relative in .gauge__body*/
+  top: 100%;
+  left: 0;
+  width: inherit; /*inherits width*/
+  height: 100%;
+  background: #ab337f; /*color of progress*/
+
+  /* should rotate around pivot point (Drehpunkt)*/
+  transform-origin: center top; /*moves pivot point to correct position*/
+  transform: rotate(0.25turn); 
+  transition: transform 0.2s ease-out;
+}
+
+.gauge__cover {
+  width: 75%; /*25% less than outer circle*/
+  height: 150%;
+  background: #00206d;
+  border-radius: 50%; /*to make it a circle*/
+  position: absolute;
+  top: 25%; /*to push it down 25% to create gap*/
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* to display text */
+  display: flex;
+  /*to center the text*/
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 25%; /*to push it up 25%*/
+  box-sizing: border-box;
+  /*width + padding + border = actual width of an element*/
+  /*box-sizing: border-box  padding and border are included in the width and height*/
+}

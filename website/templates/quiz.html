@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raumschiff Quiz</title>
+    <link rel="stylesheet" href="..\static\css\styles_quiz.css">
+</head>
+<body>
+    <!-- Planeten und Sterne -->
+    <!-- Diese Divs stellen verschiedene Planeten und Sterne dar, die als Hintergrunddekoration dienen -->
+    <div class="planet" style="top: 20%; left: 10%; font-size: 100px;">🌍</div>
+    <div class="planet" style="top: 70%; left: 80%; font-size: 80px;">🌑</div>
+    <div class="planet" style="top: 40%; left: 60%; font-size: 160px;">🪐</div>
+    <div class="planet" style="top: 10%; left: 80%; font-size: 120px;">🛸</div>
+    <div class="planet" style="top: 80%; left: 20%; font-size: 70px;">🌕</div>
+    <!-- Sterne als Hintergrunddekoration -->
+    <div class="star" style="top: 5%; left: 70%; font-size: 10px;">✨</div>
+    <div class="star" style="top: 30%; left: 90%; font-size: 8px;">✨</div>
+    <div class="star" style="top: 50%; left: 20%; font-size: 6px;">✨</div>
+    <div class="star" style="top: 70%; left: 50%; font-size: 12px;">✨</div>
+    <div class="star" style="top: 20%; left: 30%; font-size: 7px;">✨</div>
+    <div class="star" style="top: 60%; left: 40%; font-size: 14px;">✨</div>
+    <div class="star" style="top: 10%; left: 10%; font-size: 7px;">✨</div>
+    <div class="star" style="top: 15%; left: 36%; font-size: 9px;">✨</div>
+    <div class="star" style="top: 25%; left: 12%; font-size: 7px;">✨</div>
+    <div class="star" style="top: 90%; left: 77%; font-size: 12px;">✨</div>
+    <div class="star" style="top: 80%; left: 10%; font-size: 14px;">✨</div>
+    <div class="star" style="top: 88%; left: 39%; font-size: 8px;">✨</div>
+    <div class="star" style="top: 95%; left: 50%; font-size: 7px;">✨</div>
+    <div class="star" style="top: 40%; left: 44%; font-size: 11px;">✨</div>
+    <div class="star" style="top: 55%; left: 56%; font-size: 11px;">✨</div>
+    <div class="star" style="top: 27%; left: 32%; font-size: 13px;">✨</div>
+    <div class="star" style="top: 30%; left: 65%; font-size: 8px;">✨</div>
+    <div class="star" style="top: 42%; left: 84%; font-size: 9px;">✨</div>
+    <div class="star" style="top: 60%; left: 90%; font-size: 14px;">✨</div>
+    <div class="star" style="top: 45%; left: 30%; font-size: 12px;">✨</div>
+    <div class="star" style="top: 65%; left: 23%; font-size: 8px;">✨</div>
+    <div class="star" style="top: 84%; left: 65%; font-size: 13px;">✨</div>
+    <div class="star" style="top: 50%; left: 7%; font-size: 10px;">✨</div>
+    <div class="star" style="top: 5%; left: 25%; font-size: 11px;">✨</div>
+    <div class="star" style="top: 20%; left: 55%; font-size: 11px;">✨</div>
+
+    <!-- Startbildschirm des Quiz -->
+    <div id="start-screen">
+        <h1 style="font-size: 36px;">Raumschiff Quiz</h1>
+        <p style="font-size: 18px;">Du musst diese Fragen lösen, um die Systeme wieder hochzufahren.</p>
+        <!-- Start-Button, der das Quiz startet -->
+        <button id="start-button" class="action-button" onclick="startQuiz()">Start</button>
+    </div>
+
+    <!-- Container für die Fragen und Antwortmöglichkeiten -->
+    <div class="question-container" id="question-container">
+        <!-- Bereich für die Frage -->
+        <div class="question" id="question"></div>
+        <!-- Bereich für die Antwortmöglichkeiten -->
+        <div class="options" id="options"></div>
+        <!-- Benachrichtigungsbereich für richtige oder falsche Antworten -->
+        <div class="notification" id="notification"></div>
+        <!-- Button für die nächste Frage -->
+        <button id="next-button" onclick="nextQuestion()">Weiter</button>
+    </div>
+
+    <!-- Bereich für die Ergebnisnachricht -->
+    <div id="result-message" style="font-size: 22px;"></div>
+
+    <!-- Container für dynamische Buttons (z.B. "Zum Cockpit" oder "Neues Quiz starten") -->
+    <div class="button-container" id="button-container"></div>
+
+    <!-- Animation eines Raumschiffs -->
+    <div id="spaceship">🚀</div>
+
+    <!-- Einbindung des externen JavaScript-Codes -->
+    <script src="..\static\js\script_quiz.js"></script>
+</body>
+</html>
+

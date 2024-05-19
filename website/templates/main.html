@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html>
+
+        <!--page header:-->
+        <head>
+
+            <!--Unicode UTF-8 -->
+            <!--character set-->
+            <meta charset="UTF-8">
+            
+            <!--viewport dimensions and scaling-->
+            <meta name="viewport" content="width=device-width initial-scale=1.0 user-scalable=no">
+            <!-- width=device-width sets the width of the page to the width of the device's window -->
+            <!-- user-scalable=no prohibits users from zooming -->
+            <!-- initial-scale=1.0 sets the initial zoom level when the page is first loaded by the browser-->
+
+            <!--title:-->
+            <title>Escape-Game</title>
+
+             <!--to link CSS (Stylesheet language)-->^^
+             <link rel="stylesheet" href="..\static\css\styles_main.css">
+            
+
+             <!--to link JavaScript-->
+            <script src="..\static\js\script_main.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+
+        </head>
+
+        <!--page body:-->
+        <body >
+
+            <!--heading:-->
+            <p>
+                <br>
+            </p>
+            <h1>Die Weltraummission</h1>
+            <h2>Raumschiff die "Odysseus"</h2>
+            <h3>! SYSTEMABSTURZ !</h3>
+
+            <!--Text:-->
+
+            <!--Description with paragraphs: -->
+            <p>Um einen Schritt weiter zur Kontaktaufnahme mit der Erde zu kommen, scannt den NFC-Tag</p>
+            <p> </p>
+
+            <!--Timer:-->
+            <!--unique ID assigned: to reference this specific element in JavaScript-->
+
+            <h3>Sauerstoffvorräte:</h3>
+            
+            <p id="countdown-text"></p>
+
+            <div class="timer-container">
+              <progress id="timer" value=1200, max="1200"></progress>
+              <button id="start-button">Start</button>
+            </div>
+            
+
+            <h3>Die Systeme werden wieder hochgefahren:</h3>
+            <p>
+              <br>
+          </p>
+
+            <div class="gauge">
+              <div class="gauge__body">
+                <div class="gauge__fill"></div> <!-- actual progress-->
+                <div class="gauge__cover"></div> <!--part in the middle-->
+              </div>
+            </div>
+
+        </body>
+</html>

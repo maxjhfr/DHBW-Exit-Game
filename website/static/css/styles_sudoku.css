@@ -1,0 +1,101 @@
+/* Stil für den gesamten Körper der Seite */
+body {
+    font-family: Arial, Helvetica, sans-serif; /* Verwenden der Schriftarten Arial, Helvetica, sans-serif */
+    text-align: center; /* Zentrieren des Textes */
+    background-image: url("backgroud.jpeg"); /* Hintergrundbild festlegen */
+    background-size: cover; /* Das Hintergrundbild so skalieren, dass es den gesamten Bereich abdeckt */
+}
+
+/* Stil für die Überschrift 1 (Sudoku-Titel) */
+h1 {
+    color: #ab337f; /* Farbe für die Überschrift 1 */
+}
+
+/* Stil für die Fehleranzeige */
+#errors {
+    color: #4bbed4; /* Farbe für die Fehleranzeige */
+}
+
+/* Stil für das Sudoku-Brett */
+#board {
+    width: 450px; /* Breite des Sudoku-Bretts */
+    height: 450px; /* Höhe des Sudoku-Bretts */
+    background-color: rgb(171, 51, 127); /* Hintergrundfarbe des Sudoku-Bretts */
+    margin: 0 auto; /* Automatische Ausrichtung in der Mitte */
+    display: flex; /* Verwenden von Flexbox für die Anordnung der Kacheln */
+    flex-wrap: wrap; /* Umbruch der Kacheln, wenn sie nicht in die Zeile passen */
+}
+
+/* Stil für die einzelnen Kacheln im Sudoku-Brett */
+.tile {
+    width: 48px; /* Breite der Kachel */
+    height: 48px; /* Höhe der Kachel */
+    border: 1px solid lightgray; /* Randstil der Kachel */
+    font-size: 20px; /* Schriftgröße in der Kachel */
+    font-weight: bold; /* Fettschrift für Zahlen in der Kachel */
+    display: flex; /* Verwenden von Flexbox für die Zentrierung des Inhalts */
+    justify-content: center; /* Zentrieren des Inhalts horizontal */
+    align-items: center; /* Zentrieren des Inhalts vertikal */
+}
+
+/* Stil für die Zahlenauswahl */
+#digits {
+    width: 450px; /* Breite der Zahlenauswahl */
+    height: 50px; /* Höhe der Zahlenauswahl */
+    background-color: white; /* Hintergrundfarbe der Zahlenauswahl */
+    margin: 0 auto; /* Automatische Ausrichtung in der Mitte */
+    display: flex; /* Verwenden von Flexbox für die Anordnung der Zahlen */
+    flex-wrap: wrap; /* Umbruch der Zahlen, wenn sie nicht in die Zeile passen */
+}
+
+/* Stil für die einzelnen Zahlen in der Zahlenauswahl */
+.number {
+    width: 44px; /* Breite der Zahl */
+    height: 44px; /* Höhe der Zahl */
+    border: 1px solid black; /* Randstil der Zahl */
+    margin: 2px; /* Abstand zwischen den Zahlen */
+    font-size: 20px; /* Schriftgröße der Zahl */
+    font-weight: bold; /* Fettschrift der Zahl */
+    display: flex; /* Verwenden von Flexbox für die Zentrierung des Inhalts */
+    justify-content: center; /* Zentrieren des Inhalts horizontal */
+    align-items: center; /* Zentrieren des Inhalts vertikal */
+}
+
+/* Stil für ausgewählte Zahl in der Zahlenauswahl */
+.number-selected {
+    background-color: gray; /* Hintergrundfarbe für ausgewählte Zahl */
+}
+
+/* Stil für die Startzahlen im Sudoku-Brett */
+.tile-start {
+    background-color: whitesmoke; /* Hintergrundfarbe für die Startzahlen */
+}
+
+/* Stil für die horizontale Linie im Sudoku-Brett */
+.horizontal-line {
+    border-bottom: 1px solid black; /* Unterstrich-Stil für horizontale Linie */
+}
+
+/* Stil für die vertikale Linie im Sudoku-Brett */
+.vertical-line {
+    border-right: 1px solid black; /* Rechtsstrich-Stil für vertikale Linie */
+}
+
+/* Stil für den Endbildschirm */
+#end-screen {
+    display: none; /* Standardmäßig ausblenden */
+}
+
+/* Stil für die Schaltflächen */
+button {
+    padding: 10px 20px; /* Innenabstand der Schaltfläche */
+    font-size: 16px; /* Schriftgröße der Schaltfläche */
+    cursor: pointer; /* Zeiger-Stil beim Überfahren der Schaltfläche */
+    background-color: rgb(171, 51, 127); /* Hintergrundfarbe der Schaltfläche */
+    color: white; /* Weißer Text für die Schaltfläche */
+}
+
+/* Stil für die Nachricht auf dem Endbildschirm */
+#end-message {
+    color: white; /* Weißer Text für die Nachricht */
+}

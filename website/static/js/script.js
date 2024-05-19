@@ -1,28 +1,29 @@
-// script.js
-console.log('JAVASCRIPT IST GELADEN LOL')
+document.addEventListener("DOMContentLoaded", () => {
+    const socket = io();
+
+
+    socket.on('change_button_color', () => {
+        const button = document.getElementById('minecraft_done');
+        button.style.backgroundColor = 'green';
+    });
+
+    socket.on('rfid_scanned', () => {
+        
+    });
 
 
 
-const socket = io('ws://127.0.0.1:5000');
+    //event listener when send button gets hit and sends message to flask
+    document.getElementById('send-data').addEventListener('click', () => {
+        const data = document.getElementById('data-input').value;
+        fetch('/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: data })
+        });
+    });
 
-
-socket.on('connect', () => {
-    console.log('Connected to WebSocket server');
-});
-
-socket.on('minecraft_done', (data) => {
-    console.log(data)
-    let code = data.data
-    document.getElementById('testField').innerHTML = code
-    document.getElementById('minecraft_done').style.backgroundColor = 'green'
-});
-
-socket.on('minecraft_connected', (data) => {
-    console.log(data)
-    document.getElementById('minecraft_connected').style.backgroundColor = 'green';
-});
-
-socket.on('nfc_raspi_read', (data) => {
-    console.log(data)
-    document.getElementById('nfc_raspi_read').style.backgroundColor = 'green';
+    
 });

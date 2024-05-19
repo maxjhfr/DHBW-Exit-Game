@@ -1,0 +1,128 @@
+/* Grundlegende Stile für die Seite */
+body {
+    font-family: Arial, sans-serif; /* Schriftart für den gesamten Text */
+    background-color: #000; /* Schwarzer Hintergrund */
+    color: #fff; /* Weißer Text */
+    text-align: center; /* Text zentriert */
+    padding: 20px; /* Innenabstand um den gesamten Inhalt */
+    background-image: url('https://www.transparenttextures.com/patterns/dark-wood.png'); /* Hintergrundbild */
+    background-size: cover; /* Hintergrundbild auf die gesamte Seite skalieren */
+}
+
+/* Container für die Fragen, zunächst ausgeblendet */
+.question-container {
+    display: none; /* Versteckt den Container standardmäßig */
+    justify-content: center; /* Zentriert den Inhalt horizontal */
+    align-items: center; /* Zentriert den Inhalt vertikal */
+    height: 100vh; /* Volle Höhe des Viewports */
+}
+
+/* Stil für die Frage selbst */
+.question {
+    font-size: 24px; /* Schriftgröße der Frage */
+    margin-bottom: 20px; /* Abstand unterhalb der Frage */
+    color: #fff; /* Weiße Textfarbe */
+}
+
+/* Container für die Antwortoptionen */
+.options {
+    display: flex; /* Flexbox Layout */
+    justify-content: center; /* Zentriert die Optionen horizontal */
+    margin-bottom: 20px; /* Abstand unterhalb der Optionen */
+}
+
+/* Stil für jede Antwortoption */
+.option {
+    margin: 0 10px; /* Horizontaler Abstand zwischen den Optionen */
+    padding: 10px 20px; /* Innenabstand der Optionen */
+    font-size: 18px; /* Schriftgröße der Optionen */
+    cursor: pointer; /* Zeiger-Cursor bei Hover */
+    background-color: rgb(171, 51, 127); /* Hintergrundfarbe der Optionen */
+    border: none; /* Keine Rahmenlinie */
+    color: #fff; /* Weiße Textfarbe */
+    border-radius: 5px; /* Abgerundete Ecken */
+    transition: background-color 0.3s; /* Weicher Übergang der Hintergrundfarbe bei Hover */
+}
+
+/* Stil für die Antwortoption bei Hover */
+.option:hover {
+    background-color: rgb(121, 36, 90); /* Dunklere Hintergrundfarbe bei Hover */
+}
+
+/* Stil für die korrekte Antwortoption */
+.correct {
+    background-color: #28a745 !important; /* Grüne Hintergrundfarbe für korrekte Antwort */
+}
+
+/* Stil für die falsche Antwortoption */
+.incorrect {
+    background-color: #dc3545 !important; /* Rote Hintergrundfarbe für falsche Antwort */
+}
+
+/* Benachrichtigungsbereich, zunächst ausgeblendet */
+.notification {
+    display: none; /* Versteckt die Benachrichtigung standardmäßig */
+    margin-top: 20px; /* Abstand oberhalb der Benachrichtigung */
+    font-size: 18px; /* Schriftgröße der Benachrichtigung */
+    color: #28a745; /* Grüne Textfarbe */
+}
+
+/* Container für dynamische Buttons */
+.button-container {
+    margin-top: 20px; /* Abstand oberhalb des Containers */
+}
+
+/* Stil für allgemeine Aktionsbuttons */
+.action-button {
+    padding: 10px 20px; /* Innenabstand der Buttons */
+    font-size: 18px; /* Schriftgröße der Buttons */
+    background-color: rgb(171, 51, 127); /* Hintergrundfarbe der Buttons */
+    border: none; /* Keine Rahmenlinie */
+    color: #fff; /* Weiße Textfarbe */
+    border-radius: 5px; /* Abgerundete Ecken */
+    cursor: pointer; /* Zeiger-Cursor bei Hover */
+    transition: background-color 0.3s; /* Weicher Übergang der Hintergrundfarbe bei Hover */
+}
+
+/* Stil für die Aktionsbuttons bei Hover */
+.action-button:hover {
+    background-color: rgb(121, 36, 90); /* Dunklere Hintergrundfarbe bei Hover */
+}
+
+/* Stil für die Ergebnisnachricht */
+#result-message {
+    margin-top: 20px; /* Abstand oberhalb der Ergebnisnachricht */
+    font-size: 20px; /* Schriftgröße der Ergebnisnachricht */
+}
+
+/* Stil für die Planeten, die als Hintergrunddekor dienen */
+.planet {
+    position: absolute; /* Absolute Positionierung */
+    z-index: -1; /* Hinter dem restlichen Inhalt platzieren */
+}
+
+/* Stil für die Sterne, die als Hintergrunddekor dienen */
+.star {
+    position: absolute; /* Absolute Positionierung */
+    z-index: -1; /* Hinter dem restlichen Inhalt platzieren */
+}
+
+/* Stil für das Raumschiff */
+#spaceship {
+    position: absolute; /* Absolute Positionierung */
+    font-size: 40px; /* Schriftgröße des Raumschiffs */
+    top: calc(50% - 25px); /* Vertikal zentriert */
+    left: calc(50% - 25px); /* Horizontal zentriert */
+    animation: orbit 30s linear infinite; /* Endlose Rotation um die Mitte */
+    z-index: -1; /* Hinter dem restlichen Inhalt platzieren */
+}
+
+/* Keyframes für die Orbit-Animation des Raumschiffs */
+@keyframes orbit {
+    from {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg) translateX(200px) rotate(0deg); /* Startposition */
+    }
+    to {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg) translateX(200px) rotate(-360deg); /* Endposition nach einer Umdrehung */
+    }
+}

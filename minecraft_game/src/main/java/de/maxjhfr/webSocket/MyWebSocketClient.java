@@ -10,16 +10,28 @@ public class MyWebSocketClient extends WebSocketClient {
 
   /**
    * @param serverUri
-   * URI is "ws://196.168.178.84:5000"
    */
   public MyWebSocketClient(URI serverUri) {
     super(serverUri);
   }
 
+  public void connectToFlask() {
+    try {
+      System.out.println("trying to connect");
+      connectBlocking();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    if (isOpen()) {
+      System.out.println("connected");
+    } else {
+      System.out.println("connection didn't work");
+    }
+  }
+
   @Override
     public void onOpen(ServerHandshake handshakedata) {
       System.out.println("Connected to server");
-      sendMessage("minecraft", "connected");
     }
 
   @Override
@@ -57,7 +69,5 @@ public class MyWebSocketClient extends WebSocketClient {
     } else {
         System.out.println("WebSocket connection is not open. Cannot send message.");
     }
-}
-
-
+  }
 }
