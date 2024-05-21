@@ -1,5 +1,8 @@
 type      ,value   ,usage
 
+
+game      ,started ,sent when start button gets clicked on the website
+
 rfid      ,scanned ,sent when rasberry pi recognises a new rfid thing being scanned
 
 
@@ -8,5 +11,8 @@ rfid      ,scanned ,sent when rasberry pi recognises a new rfid thing being scan
 
 
 
-minecraft ,done    ,minecraft game is done
 
+minecraft ,done    ,minecraft game is done
+lamps     ,done    ,lämpchen game is done and correct number was input
+quiz      ,done    ,quiz completed
+sudoku    ,done    ,sudoku completed

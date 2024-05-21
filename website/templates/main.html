@@ -53,7 +53,7 @@
             <p id="countdown-text"></p>
 
             <div class="timer-container">
-              <progress id="timer" value=1200, max="1200"></progress>
+              <progress class="timer" id="timer" value=1200, max="1200"></progress>
               <button id="start-button">Start</button>
             </div>
             
@@ -62,13 +62,22 @@
             <p>
               <br>
           </p>
+          
+          <div id="data-lamps-div">
+            <form id="data-form">
+              <label for="data-input">Anzahl der kaputten lämpchen:</label>
+              <input type="text" id="data-input" name="data">
+              <button type="button" id="send-data">Send</button>
+            </form>
+            <label id="wrong" for="wrong">Wrong number!</label>
+          </div>
 
-            <div class="gauge">
-              <div class="gauge__body">
-                <div class="gauge__fill"></div> <!-- actual progress-->
-                <div class="gauge__cover"></div> <!--part in the middle-->
-              </div>
+          <div class="gauge">
+            <div class="gauge__body">
+              <div class="gauge__fill"></div> <!-- actual progress-->
+              <div class="gauge__cover"></div> <!--part in the middle-->
             </div>
+          </div>
 
         </body>
 </html>

@@ -113,6 +113,10 @@ function nextQuestion() {
   }
 }
 
+function closeTab() {
+  return window.close();
+}
+
 // Zeigt das Ergebnis des Quiz an
 function showResult() {
   var resultMessage = "";
@@ -138,7 +142,7 @@ function showResult() {
   // Setzt den Buttontext und die Funktion je nach Anzahl der richtigen Antworten
   if (correctAnswers >= 5) {
       actionButton.textContent = 'Zum Cockpit';
-      actionButton.onclick = null; // Entfernt jegliche Funktion
+      actionButton.onclick = closeTab(); // Entfernt jegliche Funktion
   } else {
       actionButton.textContent = 'Neues Quiz starten';
       actionButton.onclick = restartQuiz;
@@ -146,6 +150,18 @@ function showResult() {
 
   // Fügt den neuen Button dem Container hinzu
   buttonContainer.appendChild(actionButton);
+
+  //back to flask
+  fetch('/hub', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ "type": "quiz", "value": "done" })
+  })
+
+
+
 }
 
 // Startet das Quiz neu
@@ -162,3 +178,7 @@ function restartQuiz() {
   // Löscht den Inhalt des Button-Containers
   document.getElementById('button-container').innerHTML = ''; 
 }
+
+
+
+

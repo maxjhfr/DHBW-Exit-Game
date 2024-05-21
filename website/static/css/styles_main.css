@@ -30,6 +30,40 @@ h2{
   color: #4bbed4
 }
 
+/*lamps return box*/
+#data-lamps-div {
+  visibility: hidden;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #ab337f;
+  border-radius: 8px;
+}
+
+#data-input {
+  background-color: rgb(255, 255, 255);
+  border: none;
+  content: "hi";
+}
+
+#send-data {
+  background-color: #ab337f;
+  color: white;
+  border: none;
+}
+
+#wrong {
+  color: rgb(0, 8, 235);
+  margin-top: 15px;
+  font-size: large;
+  font-weight: bold;
+  visibility: hidden;
+}
+
+
+
+
+
+
 /*Timer*/
 #timer{
   /*to change width of the progress bar*/

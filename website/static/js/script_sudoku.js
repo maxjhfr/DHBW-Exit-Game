@@ -138,6 +138,18 @@ function checkCompletion() {
     showEndScreen(true);
 }
 
+function sendSuccess() {
+    fetch('/hub', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ "type": "sudoku", "value": "done" })
+    })
+}
+
+
+
 // Funktion, um den Endbildschirm anzuzeigen
 function showEndScreen(success) {
     document.getElementById("game-container").style.display = "none";
@@ -156,7 +168,10 @@ function showEndScreen(success) {
 	"Gehe nun zurück zum Cockpit";
         // Schaltfläche mit Text "Zum Cockpit" und deaktivierter Funktionalität anzeigen
         document.getElementById("end-button").innerText = "Zum Cockpit";
-        document.getElementById("end-button").onclick = null; // Button-Funktionalität deaktivieren
+        document.getElementById("end-button").onclick = function () {
+            window.close()
+            sendSuccess()
+        };
     } else {
         // Nachricht für das Scheitern anzeigen
         document.getElementById("end-message").innerText = 

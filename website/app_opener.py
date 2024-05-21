@@ -16,6 +16,7 @@ class AppOpener():
     for title in titles:
       if str(title).startswith(str(window_title)):
         window = gw.getWindowsWithTitle(title=title)[0]
+        break
 
     if window == None:
       print("Window not found!")
@@ -32,6 +33,25 @@ class AppOpener():
     pyautogui.sleep(0.5)
 
     print("fokussiert")
+
+  def close_by_title(self, window_title):
+    titles = gw.getAllTitles()
+    window = None
+
+    # Loop through all titles and search for a match
+    for title in titles:
+      if str(title).startswith(str(window_title)):
+        window = gw.getWindowsWithTitle(title=title)[0]
+        break  # Exit loop after finding the first match
+
+    if window is None:
+      print("Window not found!")
+      return
+
+    # Close the window using Win32 API
+    hwnd = window._hWnd
+    win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
+    print(f"Window '{window.title}' closed")
 
 
 
