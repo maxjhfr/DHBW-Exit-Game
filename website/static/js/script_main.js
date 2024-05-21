@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   socket.on('minecraft_done', () => {
     console.log("MINECRARFT")
     const gaugeElement = document.querySelector(".gauge"); 
-    setGaugeValue(gaugeElement, 25)
+    setGaugeValue(gaugeElement, .25)
   });
 
   socket.on('lamps_start', () => {
@@ -75,27 +75,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
   socket.on('lamps_done', () => {
     const gaugeElement = document.querySelector(".gauge"); 
-    setGaugeValue(gaugeElement, 50)
+    setGaugeValue(gaugeElement, .5)
     const input_div = document.getElementById("data-lamps-div");
     input_div.style.visibility = "hidden"
   });
 
   socket.on('quiz_done', () => {
     const gaugeElement = document.querySelector(".gauge"); 
-    setGaugeValue(gaugeElement, 75)
+    setGaugeValue(gaugeElement, .75)
   });
 
   socket.on('sudoku_done', () => {
     const gaugeElement = document.querySelector(".gauge"); 
-    setGaugeValue(gaugeElement, 100)
+    setGaugeValue(gaugeElement, 1)
   });
 
   socket.on('rfid_scanned', (data) => {
-    console.log("RFIIIIDDDDD")
     if (data.open === 'quiz') {
       window.open('/quiz', '_blank').focus();
     } else if (data.open === 'sudoku') {
       window.open('/sudoku', '_blank').focus();
+      console.log('Received data for another game:', data.open);
+    } else if (data.open === 'scratch') {
+      window.open('https://scratch.mit.edu/projects/1013763026/fullscreen/', '_blank').focus();
       console.log('Received data for another game:', data.open);
     }
   });

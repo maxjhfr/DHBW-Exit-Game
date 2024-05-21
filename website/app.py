@@ -1,9 +1,11 @@
+from audio.audio_player import AudioPlayer
+from app_opener import AppOpener
+from recognition.handrecognition import recognise
+
 from flask import Flask, render_template, request, jsonify, url_for, redirect
 from flask_socketio import SocketIO
 from time import sleep
-
-from audio.audio_player import AudioPlayer
-from app_opener import AppOpener
+import requests
 
 
 app = Flask(__name__)
@@ -99,7 +101,7 @@ def get_data():
                     case 2:
                         #open minecraft
                         game_variables = update_game_variable(game_variables,game_status, True)
-                        audio_player.play_sound(game_status)
+                        audio_player.play_sound(game_status - 1)
                         app_opener.focus_by_title("Minecraft")
                         game_status += 1
                         return jsonify({'status': 'success'})
@@ -113,21 +115,22 @@ def get_data():
                     #quiz intro
                     case 6:
                         game_variables = update_game_variable(game_variables,game_status, True)
-                        socketio.emit('rfid_scanned', {"open": "quiz"})
                         audio_player.play_sound(game_status - 1)
+                        socketio.emit('rfid_scanned', {"open": "quiz"})
                         game_status += 1
                         return jsonify({'status': 'success'})
                     #sudoku
                     case 8:
                         game_variables = update_game_variable(game_variables,game_status, True)
-                        socketio.emit('rfid_scanned', {"open": "sudoku"})
                         audio_player.play_sound(game_status - 1)
+                        socketio.emit('rfid_scanned', {"open": "sudoku"})
                         game_status += 1
                         return jsonify({'status': 'success'})
                     #end sound
                     case 10:
                         game_variables = update_game_variable(game_variables,game_status, True)
                         audio_player.play_sound(game_status - 1)
+                        socketio.emit('rfid_scanned', {"open": "scratch"})
                         game_status += 1
                         return jsonify({'status': 'success'})
                     #let rasberry know that there is no sound to play (wrong order of game)
@@ -161,7 +164,7 @@ def get_data():
         case "sudoku":
             if data.get("value") == "done":
                 game_status += 1
-                socketio.emit("quiz_done")
+                socketio.emit("sudoku_done")
                 return jsonify({'status': 'success'})
             return jsonify({'status': 'failed'})
            
@@ -171,13 +174,32 @@ def get_data():
     
     return jsonify({'status': 'success', 'data_received': data})
 
-@app.route('/sudoku')
+@app.route('/sudoku', methods=['GET'])
 def sudoku():
   return render_template('sudoku.html')
 
-@app.route('/sudoku')
-def sudoku():
-  return render_template('sudoku.html')
+@app.route('/sudoku', methods=['POST'])
+def get_data_sudoku():
+    data = request.get_json()
+    print(data)
+    
+    type = data.get('type')
+    value = data.get('value')
+
+    if type != "sudoku" or value != "done":
+        return jsonify({'status': 'failed'})
+    
+    socketio.emit("activate_camera")
+    if (recognise()):
+        hub_data = {"type": "sudoku", "value": "done"}
+        requests.post('http://localhost:5000/hub', json=hub_data)
+        return jsonify({'status': 'success'})
+
+
+
+
+
+    
 
 @app.route('/quiz')
 def quiz():

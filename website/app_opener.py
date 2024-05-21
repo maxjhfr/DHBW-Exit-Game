@@ -53,5 +53,7 @@ class AppOpener():
     win32gui.PostMessage(hwnd, win32con.WM_CLOSE, 0, 0)
     print(f"Window '{window.title}' closed")
 
+    
+
 
 

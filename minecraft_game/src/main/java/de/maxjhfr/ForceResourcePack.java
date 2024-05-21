@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 
 public class ForceResourcePack {
 
-  private String ulr = "https://www.dropbox.com/scl/fi/kg4f0oe20vzmxrr6nqjvl/exitGame.zip?rlkey=uu2oq8uy4zo0i7fe6chhcr7pr&st=30zp7jym&dl=1";
+  private String ulr = "https://www.dropbox.com/scl/fi/g4bypq0r2g87i1xu0h13y/exitGame.zip?rlkey=zg2jkcooxqz6elrkjucv9r8it&st=junviajn&dl=0";
 
   ForceResourcePack() {
     System.out.println("Resource pack force enabled!");

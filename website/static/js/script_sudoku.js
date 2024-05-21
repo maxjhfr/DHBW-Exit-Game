@@ -139,7 +139,7 @@ function checkCompletion() {
 }
 
 function sendSuccess() {
-    fetch('/hub', {
+    fetch('/sudoku', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
