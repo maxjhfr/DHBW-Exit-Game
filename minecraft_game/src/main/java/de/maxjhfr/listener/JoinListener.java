@@ -13,16 +13,20 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ArmorMeta;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import de.maxjhfr.Main;
+
 public class JoinListener implements Listener {
 
+    private Main plugin;
 
-    public JoinListener() {
+    public JoinListener(Main plugin) {
+        this.plugin = plugin;
     }
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e) {
         Player p = e.getPlayer();
-        //plugin.getForceResourcePack().forcePlayer(p);
+        plugin.getForceResourcePack().forcePlayer(p);
 
         p.getInventory().clear();
 

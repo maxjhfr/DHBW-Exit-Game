@@ -22,7 +22,7 @@ public class Main extends JavaPlugin {
 
         // register listeners
         final BlockPlaceListener blockPlaceListener = new BlockPlaceListener();
-        final JoinListener joinListener = new JoinListener();
+        final JoinListener joinListener = new JoinListener(this);
         getServer().getPluginManager().registerEvents(blockPlaceListener, this);
         getServer().getPluginManager().registerEvents(joinListener, this);
 
