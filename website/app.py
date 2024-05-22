@@ -143,7 +143,7 @@ def get_data():
                 game_status += 1
                 socketio.emit('minecraft_done')
                 sleep(5)
-                #app_opener.close_by_title("Minecraft")
+                app_opener.close_by_title("Minecraft")
 
         case "lamps":
             if data.get("value") == "2":
@@ -190,7 +190,8 @@ def get_data_sudoku():
         return jsonify({'status': 'failed'})
     
     socketio.emit("activate_camera")
-    if (recognise()):
+    hi = recognise()
+    if (hi):
         hub_data = {"type": "sudoku", "value": "done"}
         requests.post('http://localhost:5000/hub', json=hub_data)
         return jsonify({'status': 'success'})

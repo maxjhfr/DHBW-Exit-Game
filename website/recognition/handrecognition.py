@@ -2,7 +2,6 @@ import mediapipe as mp
 import cv2, time
 import numpy as np
 from math import atan2, degrees
-from app_opener import AppOpener
 
 class Timer:
     def __init__(self):
@@ -36,7 +35,6 @@ class Timer:
 
 
 def recognise():
-  app_opener = AppOpener()
   mp_drawing = mp.solutions.drawing_utils
   mp_hands = mp.solutions.hands
 
@@ -61,7 +59,6 @@ def recognise():
       image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
       image.flags.writeable = False
 
-      app_opener.focus_by_title("Hand Tracking")
 
       #detect
       results = hands.process(image)
@@ -69,6 +66,7 @@ def recognise():
       image.flags.writeable = True
       #back to BGR for displaying
       image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
+      
 
       #draw landmarks on camera feed one frame at the time
       if results.multi_hand_landmarks:
