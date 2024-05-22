@@ -2,7 +2,8 @@
 
 # Setup:
 
-Minecraft resource pack is hosted on dropbox on Max's account (https://www.dropbox.com/scl/fi/eyr2q2n36ifel12xsd8ny/exitGame.zip?rlkey=nd47hd1pshvf9ddxy0uilv9bs&st=ehf70fme&dl=0)
+Minecraft resource pack is hosted on dropbox https://www.dropbox.com/scl/fi/g4bypq0r2g87i1xu0h13y/exitGame.zip?rlkey=zg2jkcooxqz6elrkjucv9r8it&st=tgot1u0g&dl=0 
+
 
 1. Clone repo
 2. create python vim and get dependencies with requirements.txt
